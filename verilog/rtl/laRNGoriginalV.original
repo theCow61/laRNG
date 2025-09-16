@@ -1,0 +1,193 @@
+module laRNG #(
+	parameter DUALLATCH_SET_SIZE = 12,
+	parameter FIFO_WORDS = 8
+)(
+	input i_sysClock,
+	input i_gpioSPIClock,
+	input i_LAClock,
+	input wb_rst_i,
+	input wbs_stb_i,
+	input wbs_cyc_i,
+	input wbs_we_i,
+	input [31:0] wbs_adr_i,
+	input [31:0] wbs_dat_i,
+	output [31:0] wbs_dat_o,
+	output reg wbs_ack_o,
+	output o_genned,
+	output [127:0] la_out
+);
+
+// pulls by default block until word is ready // lower addresses for config, then infc, then rest for pulls
+
+
+// config register should be hard clocked from system.
+wire conf_auxEnb; // active high. Default low.
+wire [1:0] conf_mode; // 0: default SPI mode. 1: sys mode. 2,3: LA mode (LA mode may be nice for characterizing though may add latency to all the modes)
+wire conf_nBlockingPulls; // 0: blocking for a full word of ran. 1: up to the user to know how much ran there is and wether they should pull or not (may be useful for very fast operation when the amount of bytes needed doesn't line up to a word. Interrupts should be turned off during these pulls).
+
+
+reg[4:0] infc_bytesReqed; // if doing async req, then don't interrupt until we have these many bytes ready. If doing blocking pull on data, don't block on waiting for a full word for the last bytes such that those last bytes are not aligned to a word.
+// when high and asyncReq high, do interrupt as well
+wire infc_bytesReqedReady;
+reg infc_asyncReq;
+
+
+reg s_muxedClock; // For ran bit capturing FF and fifo. Fifo should always only run on sys clock but lets use this muxedClock instead of explicitly using sysClock for it  just so the clocks can be the exact same net.
+always @(i_sysClock, i_gpioSPIClock, i_LAClock, conf_mode) begin
+	case (conf_mode)
+		2'b00	: s_muxedClock = i_gpioSPIClock;
+		2'b01	: s_muxedClock = i_sysClock;
+		2'b10	: s_muxedClock = i_LAClock;
+		2'b11	: s_muxedClock = i_LAClock;
+	endcase
+end
+
+
+wire[DUALLATCH_SET_SIZE-1:0] dualLatchBlockOuts;
+
+auxRanSet #(.N_BLOCKS(DUALLATCH_SET_SIZE)) ranSet1 (
+	.i_enb(conf_auxEnb),
+	.o_block_Qs(dualLatchBlockOuts)
+);
+
+
+
+wire xored_result;
+assign xored_result = ^dualLatchBlockOuts;
+
+reg s_ranBit;
+//assign o_genned = s_ranBit & !(|conf_mode);
+assign o_genned = 'b1;
+
+
+// DFF for storing fresh ran bit. 
+always @(posedge s_muxedClock) begin
+	s_ranBit <= xored_result;
+end
+
+
+assign la_out[5] = s_ranBit;
+reg s_doRead; // careful
+wire [31:0] s_fifoOut;
+wire [($clog2(FIFO_WORDS)+2)-1:0] s_bytesReady;
+assign la_out[127:123] = s_bytesReady;
+assign la_out[63:32] = s_fifoOut;
+
+fifo #(.N_WORDS(FIFO_WORDS)) aFifo(
+	.i_clock(s_muxedClock), // fifo should only need to be clocked on system clock, though we want same net as clock going to first DFF which may be used for spi.
+	.i_rst(i_rst), // maybe get rid of i_rst for fifo, it should be disabled by default anyways so the i_enb may act as its reset anyways
+	.i_enb(conf_mode[0] | conf_mode[1]), // sys mode or la mode
+	.i_ranBit(s_ranBit),
+	.i_read(s_doRead),
+	.o_data(s_fifoOut),
+	.o_bytesReady(s_bytesReady)
+);
+
+
+wire s_hitBytesReqedOrMore;
+assign infc_bytesReqedReady = s_bytesReady >= infc_bytesReqed; // this should be async
+
+/*wire s_irq;
+assign s_irq = infc_bytesReqedReady & infc_asyncReq & (conf_mode[0] | conf_mode[1]); // or with infc_asyncReq that wishbone trying to assert asyncReq in current clock cycle, assert s_irq in same clock cychle*/
+
+// for getting around same cycle read and ack bug. I still want the actual ack
+// combinatoral incase this is implemented on logic without that bug to get faster
+// read. Make preprossesor define for wether bug is present or not.
+
+
+
+reg [3:0] control_register;
+assign la_out[3:0] = control_register;
+
+reg s_writing;
+
+// writing should ack without delay (well actually some delay until we can
+// figure out if asyncronous wishbone transactions are supported)
+always @(posedge i_sysClock) begin
+	if (wb_rst_i) begin
+		control_register <= 0;
+	end
+	else begin
+		if (wbs_stb_i && wbs_cyc_i && wbs_we_i) begin // writing
+			case (wbs_adr_i[7:0]) // assuming filtered stb // mask of 0x000000FF
+				'h00 : begin
+					control_register <= wbs_dat_i[3:0];
+				end
+				'h04 : begin
+				end
+				'h08 : begin
+				end
+				/*'h0c : begin
+				end*/
+			endcase
+		end
+	end
+end
+
+assign conf_mode = control_register[1:0];
+assign conf_auxEnb = control_register[2];
+assign conf_nBlockingPulls = control_register[3];
+
+always @(posedge i_sysClock) begin
+	dat_out <= 0;
+	wbs_ack_o <= 0;
+	if (!wb_rst_i) begin
+		//wbs_ack_o <= (wbs_we_i | wbs_adr_i[7:4] == 'h0) & wbs_cyc_i & wbs_stb_i & ~wbs_ack_o;
+		wbs_ack_o <= (wbs_cyc_i && wbs_stb_i && !wbs_ack_o && (s_doRead || wbs_we_i || wbs_adr_i[7:4] == 'h0)) ? 1 : 0;
+
+		if (wbs_stb_i && wbs_cyc_i && !wbs_we_i && ~wbs_ack_o) begin
+			case (wbs_adr_i[7:0])
+				'h00: begin
+					dat_out[3:0] <= control_register;
+				end
+				'h04: begin
+				end
+				'h08: begin
+				end
+				//'h0c': begin
+				//end
+			endcase
+		end
+		if (s_doRead) dat_out <= s_fifoOut;
+	end
+
+end
+
+always @* begin
+	if (wbs_stb_i && wbs_cyc_i && !wbs_we_i && !wbs_ack_o && wbs_adr_i[7:4] != 0 && (conf_nBlockingPulls || s_bytesReady[($clog2(FIFO_WORDS)+2)-1:2] != 0)) begin
+		s_doRead = 1;
+	end
+	else s_doRead = 0;
+end
+
+reg[31:0] dat_out;
+assign wbs_dat_o = dat_out;
+/*reg[3:0] cnt;
+
+assign wbs_dat_o = dat_out;
+
+always @(posedge i_clock) begin
+	if (wb_rst_i) begin
+		cnt <= 0;
+	end
+	else begin
+		if (!wb_rst_i && wbs_stb_i && wbs_cyc_i && !wbs_we_i && ((wbs_adr_i & 'hFFFFFFF0) == 'h30000000)) begin
+			cnt <= cnt + 1;
+		end
+	end
+end
+
+always @(wb_rst_i or wbs_stb_i or wbs_cyc_i or wbs_we_i or wbs_adr_i or cnt) begin
+	dat_out = 'hf0f0f0f0;
+	wbs_ack_o = 'b0;
+	if (!wb_rst_i && wbs_stb_i && wbs_cyc_i && !wbs_we_i && ((wbs_adr_i & 'hFFFFFFF0)== 'h30000000)) begin
+		if (cnt == 'h8) begin
+			dat_out = 'h05050505;
+			wbs_ack_o = 'b1;
+		end
+	end
+end*/
+
+
+
+endmodule

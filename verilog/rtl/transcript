@@ -1,0 +1,643 @@
+# //  Questa Sim-64
+# //  Version 2024.2 linux_x86_64 May 20 2024
+# //
+# // Unpublished work. Copyright 2024 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+vlib work
+vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo.v /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 14:13:27 on May 17,2025
+# vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo.v /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v 
+# -- Compiling module fifo
+# -- Compiling module fifo_tb
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(82): (vlog-2643) Unterminated string literal continues onto next line.
+# ** Error: (vlog-13069) /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(87): near "Expected": syntax error, unexpected IDENTIFIER, expecting ')' or ','.
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(87): (vlog-2643) Unterminated string literal continues onto next line.
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(88): (vlog-2643) Unterminated string literal continues onto next line.
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(91): (vlog-2643) Unterminated string literal continues onto next line.
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(102): (vlog-2643) Unterminated string literal continues onto next line.
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(103): (vlog-2643) Unterminated string literal continues onto next line.
+# ** Error: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(108): Unterminated string literal started on line 103.
+# End time: 14:13:27 on May 17,2025, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 6
+# Break key hit
+vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo.v /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 14:14:26 on May 17,2025
+# vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo.v /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v 
+# -- Compiling module fifo
+# -- Compiling module fifo_tb
+# 
+# Top level modules:
+# 	fifo_tb
+# End time: 14:14:26 on May 17,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim work.fifo work.fifo_tb -voptargs=+acc
+# vsim work.fifo work.fifo_tb -voptargs="+acc" 
+# Start time: 14:14:41 on May 17,2025
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(14): (vopt-2685) [TFMPC] - Too few port connections for 'fifo_under_test'.  Expected 8, found 7.
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(14): (vopt-2718) [TFMPC] - Missing connection for port 'i_staleAllowed'.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=3.
+# Loading work.fifo(fast)
+# Loading work.fifo_tb(fast)
+# Loading work.fifo(fast__1)
+add wave -position end  sim:/fifo_tb/s_clock
+add wave -position end  sim:/fifo_tb/s_rst
+add wave -position end  sim:/fifo_tb/s_enb
+add wave -position end  sim:/fifo_tb/s_ranBit
+add wave -position end  sim:/fifo_tb/s_read
+add wave -position end  sim:/fifo_tb/s_data
+add wave -position end  sim:/fifo_tb/s_bytesReady
+run 7000
+# Expected: 0 Actual:  0
+# Expected: 1 Actual:  1
+# Expected: 4 Actual:  4
+# Expected: 0 Actual:  0
+# Expected: 7 Actual:  7
+# Expected: 3 Actual:  3
+# Expected: 0 Acutal:  0
+# Expected: 31 Actual: 31
+# Expected: 28 Actual: 28
+# Expected: 1 Actual:  1
+# Expected: 0 Actual:  0
+# Expected: 0x1 Actual: 00000001
+# Expected: 0 Actual:  0
+# Expected: 0x2 Actual: 00000002
+# Expected: 0x0 Actual: 00000000
+run 1000
+vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo.v /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 14:16:40 on May 17,2025
+# vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo.v /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v 
+# -- Compiling module fifo
+# -- Compiling module fifo_tb
+# ** Error: (vlog-13069) /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(106): near "end": syntax error, unexpected end.
+# End time: 14:16:40 on May 17,2025, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo.v /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 14:17:19 on May 17,2025
+# vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo.v /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v 
+# -- Compiling module fifo
+# -- Compiling module fifo_tb
+# 
+# Top level modules:
+# 	fifo_tb
+# End time: 14:17:19 on May 17,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo.v /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 14:17:31 on May 17,2025
+# vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo.v /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v 
+# -- Compiling module fifo
+# -- Compiling module fifo_tb
+# ** Error: (vlog-13069) /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(106): near "end": syntax error, unexpected end.
+# End time: 14:17:31 on May 17,2025, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo.v /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 14:17:37 on May 17,2025
+# vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo.v /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v 
+# -- Compiling module fifo
+# -- Compiling module fifo_tb
+# 
+# Top level modules:
+# 	fifo_tb
+# End time: 14:17:37 on May 17,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim work.fifo_tb -voptargs=+acc
+# End time: 14:17:46 on May 17,2025, Elapsed time: 0:03:05
+# Errors: 0, Warnings: 3
+# vsim work.fifo_tb -voptargs="+acc" 
+# Start time: 14:17:46 on May 17,2025
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(14): (vopt-2685) [TFMPC] - Too few port connections for 'fifo_under_test'.  Expected 8, found 7.
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(14): (vopt-2718) [TFMPC] - Missing connection for port 'i_staleAllowed'.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=3.
+# Loading work.fifo_tb(fast)
+# Loading work.fifo(fast)
+add wave -position end  sim:/fifo_tb/s_clock
+add wave -position end  sim:/fifo_tb/s_rst
+add wave -position end  sim:/fifo_tb/s_enb
+add wave -position end  sim:/fifo_tb/s_ranBit
+add wave -position end  sim:/fifo_tb/s_read
+add wave -position end  sim:/fifo_tb/s_data
+add wave -position end  sim:/fifo_tb/s_bytesReady
+run 7000
+# Expected: 0 Actual:  0
+# Expected: 1 Actual:  1
+# Expected: 4 Actual:  4
+# Expected: 0 Actual:  0
+# Expected: 7 Actual:  7
+# Expected: 3 Actual:  3
+# Expected: 0 Acutal:  0
+# Expected: 31 Actual: 31
+# Expected: 28 Actual: 28
+# Expected: 1 Actual:  1
+# Expected: 0 Actual:  0
+# Expected: 0x1 Actual: 00000001
+# Expected: 0 Actual:  0
+# Expected: 0x2 Actual: 00000002
+# Expected: 0x0 Actual: 00000000
+run 2000
+# Expected: 1 Acutal:  1
+# Expected: 0x80 Actual:        256
+vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 14:18:35 on May 17,2025
+# vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v 
+# -- Compiling module fifo_tb
+# 
+# Top level modules:
+# 	fifo_tb
+# End time: 14:18:35 on May 17,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc work.fifo_tb
+# End time: 14:18:42 on May 17,2025, Elapsed time: 0:00:56
+# Errors: 0, Warnings: 3
+# vsim -voptargs="+acc" work.fifo_tb 
+# Start time: 14:18:42 on May 17,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(14): (vopt-2685) [TFMPC] - Too few port connections for 'fifo_under_test'.  Expected 8, found 7.
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(14): (vopt-2718) [TFMPC] - Missing connection for port 'i_staleAllowed'.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=3.
+# Loading work.fifo_tb(fast)
+# Loading work.fifo(fast)
+add wave -position end  sim:/fifo_tb/s_clock
+add wave -position end  sim:/fifo_tb/s_rst
+add wave -position end  sim:/fifo_tb/s_enb
+add wave -position end  sim:/fifo_tb/s_ranBit
+add wave -position end  sim:/fifo_tb/s_read
+add wave -position end  sim:/fifo_tb/s_data
+add wave -position end  sim:/fifo_tb/s_bytesReady
+run 9000
+# Expected: 0 Actual:  0
+# Expected: 1 Actual:  1
+# Expected: 4 Actual:  4
+# Expected: 0 Actual:  0
+# Expected: 7 Actual:  7
+# Expected: 3 Actual:  3
+# Expected: 0 Acutal:  0
+# Expected: 31 Actual: 31
+# Expected: 28 Actual: 28
+# Expected: 1 Actual:  1
+# Expected: 0 Actual:  0
+# Expected: 0x1 Actual: 00000001
+# Expected: 0 Actual:  0
+# Expected: 0x2 Actual: 00000002
+# Expected: 0x0 Actual: 00000000
+# Expected: 1 Acutal:  1
+# Expected: 0x80 Actual: 00000100
+vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 14:20:57 on May 17,2025
+# vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v 
+# -- Compiling module fifo_tb
+# 
+# Top level modules:
+# 	fifo_tb
+# End time: 14:20:57 on May 17,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 14:20:58 on May 17,2025
+# vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v 
+# -- Compiling module fifo_tb
+# 
+# Top level modules:
+# 	fifo_tb
+# End time: 14:20:58 on May 17,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc work.fifo_tb
+# End time: 14:21:04 on May 17,2025, Elapsed time: 0:02:22
+# Errors: 0, Warnings: 3
+# vsim -voptargs="+acc" work.fifo_tb 
+# Start time: 14:21:04 on May 17,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(14): (vopt-2685) [TFMPC] - Too few port connections for 'fifo_under_test'.  Expected 8, found 7.
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(14): (vopt-2718) [TFMPC] - Missing connection for port 'i_staleAllowed'.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=3.
+# Loading work.fifo_tb(fast)
+# Loading work.fifo(fast)
+run 9000
+# Expected: 0 Actual:  0
+# Expected: 1 Actual:  1
+# Expected: 4 Actual:  4
+# Expected: 0 Actual:  0
+# Expected: 7 Actual:  7
+# Expected: 3 Actual:  3
+# Expected: 0 Acutal:  0
+# Expected: 31 Actual: 31
+# Expected: 28 Actual: 28
+# Expected: 1 Actual:  1
+# Expected: 0 Actual:  0
+# Expected: 0x1 Actual: 00000001
+# Expected: 0 Actual:  0
+# Expected: 0x2 Actual: 00000002
+# Expected: 0x0 Actual: 00000000
+# Expected: 1 Acutal:  0
+# Expected: 0x80 Actual: 00000080
+vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 14:33:38 on May 17,2025
+# vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v 
+# -- Compiling module fifo_tb
+# 
+# Top level modules:
+# 	fifo_tb
+# End time: 14:33:38 on May 17,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc work.fifo_tb
+# End time: 14:33:44 on May 17,2025, Elapsed time: 0:12:40
+# Errors: 0, Warnings: 3
+# vsim -voptargs="+acc" work.fifo_tb 
+# Start time: 14:33:44 on May 17,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(14): (vopt-2685) [TFMPC] - Too few port connections for 'fifo_under_test'.  Expected 8, found 7.
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(14): (vopt-2718) [TFMPC] - Missing connection for port 'i_staleAllowed'.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=3.
+# Loading work.fifo_tb(fast)
+# Loading work.fifo(fast)
+run 10000
+# Expected: 0 Actual:  0
+# Expected: 1 Actual:  1
+# Expected: 4 Actual:  4
+# Expected: 0 Actual:  0
+# Expected: 7 Actual:  7
+# Expected: 3 Actual:  3
+# Expected: 0 Acutal:  0
+# Expected: 31 Actual: 31
+# Expected: 28 Actual: 28
+# Expected: 1 Actual:  1
+# Expected: 0 Actual:  0
+# Expected: 0x1 Actual: 00000001
+# Expected: 0 Actual:  0
+# Expected: 0x2 Actual: 00000002
+# Expected: 0x0 Actual: 00000000
+# Expected: 1 Acutal:  1
+# Expected: 0x100 Actual: 00000100
+# Expected: 0 Acutal:  4
+# Expected: 0x8 Actual: 00000000
+vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo.v /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 14:38:55 on May 17,2025
+# vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo.v /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v 
+# -- Compiling module fifo
+# -- Compiling module fifo_tb
+# 
+# Top level modules:
+# 	fifo_tb
+# End time: 14:38:55 on May 17,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc work.fifo_tb
+# End time: 14:39:00 on May 17,2025, Elapsed time: 0:05:16
+# Errors: 0, Warnings: 3
+# vsim -voptargs="+acc" work.fifo_tb 
+# Start time: 14:39:00 on May 17,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(14): (vopt-2685) [TFMPC] - Too few port connections for 'fifo_under_test'.  Expected 8, found 7.
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(14): (vopt-2718) [TFMPC] - Missing connection for port 'i_staleAllowed'.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=3.
+# Loading work.fifo_tb(fast)
+# Loading work.fifo(fast)
+add wave -position end  sim:/fifo_tb/s_clock
+add wave -position end  sim:/fifo_tb/s_rst
+add wave -position end  sim:/fifo_tb/s_enb
+add wave -position end  sim:/fifo_tb/s_ranBit
+add wave -position end  sim:/fifo_tb/s_read
+add wave -position end  sim:/fifo_tb/s_data
+add wave -position end  sim:/fifo_tb/s_bytesReady
+run 10000
+# Expected: 0 Actual:  0
+# Expected: 1 Actual:  1
+# Expected: 4 Actual:  4
+# Expected: 0 Actual:  0
+# Expected: 7 Actual:  7
+# Expected: 3 Actual:  3
+# Expected: 0 Acutal:  0
+# Expected: 31 Actual: 31
+# Expected: 28 Actual: 28
+# Expected: 1 Actual:  1
+# Expected: 0 Actual:  0
+# Expected: 0x1 Actual: 00000001
+# Expected: 0 Actual:  0
+# Expected: 0x2 Actual: 00000002
+# Expected: 0x0 Actual: 00000000
+# Expected: 1 Acutal:  1
+# Expected: 0x100 Actual: 00000100
+# Expected: 0 Acutal:  0
+# Expected: 0x8 Actual: 0000009f
+add wave -position end  sim:/fifo_tb/fifo_under_test/s_currentWordProgressCounter
+add wave -position end  sim:/fifo_tb/fifo_under_test/s_currentWordAddr
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=3.
+# Loading work.fifo_tb(fast)
+# Loading work.fifo(fast)
+run 10000
+# Expected: 0 Actual:  0
+# Expected: 1 Actual:  1
+# Expected: 4 Actual:  4
+# Expected: 0 Actual:  0
+# Expected: 7 Actual:  7
+# Expected: 3 Actual:  3
+# Expected: 0 Acutal:  0
+# Expected: 31 Actual: 31
+# Expected: 28 Actual: 28
+# Expected: 1 Actual:  1
+# Expected: 0 Actual:  0
+# Expected: 0x1 Actual: 00000001
+# Expected: 0 Actual:  0
+# Expected: 0x2 Actual: 00000002
+# Expected: 0x0 Actual: 00000000
+# Expected: 1 Acutal:  1
+# Expected: 0x100 Actual: 00000100
+# Expected: 0 Acutal:  0
+# Expected: 0x8 Actual: 0000009f
+vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo.v /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 16:27:47 on May 17,2025
+# vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo.v /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v 
+# -- Compiling module fifo
+# -- Compiling module fifo_tb
+# 
+# Top level modules:
+# 	fifo_tb
+# End time: 16:27:47 on May 17,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc work.fifo_tb
+# End time: 16:27:56 on May 17,2025, Elapsed time: 1:48:56
+# Errors: 0, Warnings: 3
+# vsim -voptargs="+acc" work.fifo_tb 
+# Start time: 16:27:56 on May 17,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading work.fifo_tb(fast)
+# Loading work.fifo(fast)
+add wave -position end  sim:/fifo_tb/s_clock
+add wave -position end  sim:/fifo_tb/s_rst
+add wave -position end  sim:/fifo_tb/s_enb
+add wave -position end  sim:/fifo_tb/s_ranBit
+add wave -position end  sim:/fifo_tb/s_read
+add wave -position end  sim:/fifo_tb/s_data
+add wave -position end  sim:/fifo_tb/s_bytesReady
+add wave -position end  sim:/fifo_tb/fifo_under_test/s_currentWordAddr
+add wave -position end  sim:/fifo_tb/fifo_under_test/s_currentWordProgressCounter
+run 10000
+# Expected: 0 Actual:  0
+# Expected: 1 Actual:  1
+# Expected: 4 Actual:  4
+# Expected: 0 Actual:  0
+# Expected: 7 Actual:  7
+# Expected: 3 Actual:  3
+# Expected: 0 Acutal:  0
+# Expected: 31 Actual: 31
+# Expected: 28 Actual: 28
+# Expected: 1 Actual:  1
+# Expected: 0 Actual:  0
+# Expected: 0x1 Actual: 00000001
+# Expected: 0 Actual:  0
+# Expected: 0x2 Actual: 00000002
+# Expected: 0x0 Actual: 00000000
+# Expected: 1 Acutal:  1
+# Expected: 0x100 Actual: 00000000
+# Expected: 0 Acutal:  0
+# Expected: 0x8 Actual: 0000001f
+vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 16:40:12 on May 17,2025
+# vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v 
+# -- Compiling module fifo_tb
+# 
+# Top level modules:
+# 	fifo_tb
+# End time: 16:40:12 on May 17,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc work.fifo_tb
+# End time: 16:40:19 on May 17,2025, Elapsed time: 0:12:23
+# Errors: 0, Warnings: 1
+# vsim -voptargs="+acc" work.fifo_tb 
+# Start time: 16:40:19 on May 17,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(14): (vopt-2685) [TFMPC] - Too few port connections for 'fifo_under_test'.  Expected 8, found 7.
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(14): (vopt-2718) [TFMPC] - Missing connection for port 'i_staleAllowed'.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=3.
+# Loading work.fifo_tb(fast)
+# Loading work.fifo(fast)
+run 10000
+# Expected: 0 Actual:  0
+# Expected: 1 Actual:  1
+# Expected: 4 Actual:  4
+# Expected: 0 Actual:  0
+# Expected: 7 Actual:  7
+# Expected: 3 Actual:  3
+# Expected: 0 Acutal:  0
+# Expected: 31 Actual: 31
+# Expected: 28 Actual: 28
+# Expected: 1 Actual:  1
+# Expected: 0 Actual:  0
+# Expected: 0x1 Actual: 00000001
+# Expected: 0 Actual:  0
+# Expected: 0x2 Actual: 00000002
+# Expected: 0x0 Actual: 00000000
+# Expected: 1 Acutal:  0
+# Expected: 0x100 Actual: 00000000
+# Expected: 0 Acutal:  0
+# Expected: 0x8 Actual: 0000000f
+run 10000
+run 10000
+vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 16:46:15 on May 17,2025
+# vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v 
+# -- Compiling module fifo_tb
+# 
+# Top level modules:
+# 	fifo_tb
+# End time: 16:46:15 on May 17,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc work.fifo_tb
+# End time: 16:46:21 on May 17,2025, Elapsed time: 0:06:02
+# Errors: 0, Warnings: 3
+# vsim -voptargs="+acc" work.fifo_tb 
+# Start time: 16:46:21 on May 17,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(14): (vopt-2685) [TFMPC] - Too few port connections for 'fifo_under_test'.  Expected 8, found 7.
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(14): (vopt-2718) [TFMPC] - Missing connection for port 'i_staleAllowed'.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=3.
+# Loading work.fifo_tb(fast)
+# Loading work.fifo(fast)
+run 10000
+# Expected: 0 Actual:  0
+# Expected: 1 Actual:  1
+# Expected: 4 Actual:  4
+# Expected: 0 Actual:  0
+# Expected: 7 Actual:  7
+# Expected: 3 Actual:  3
+# Expected: 0 Acutal:  0
+# Expected: 31 Actual: 31
+# Expected: 28 Actual: 28
+# Expected: 1 Actual:  1
+# Expected: 0 Actual:  0
+# Expected: 0x1 Actual: 00000001
+# Expected: 0 Actual:  0
+# Expected: 0x2 Actual: 00000002
+# Expected: 0x0 Actual: 00000000
+# Expected: 1 Acutal:  4
+# Expected: 0x100 Actual: 00000001
+# Expected: 0 Acutal:  0
+# Expected: 0xf Actual: 0000000f
+vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 16:55:12 on May 17,2025
+# vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v 
+# -- Compiling module fifo_tb
+# 
+# Top level modules:
+# 	fifo_tb
+# End time: 16:55:12 on May 17,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc work.fifo_tb
+# End time: 16:55:17 on May 17,2025, Elapsed time: 0:08:56
+# Errors: 0, Warnings: 3
+# vsim -voptargs="+acc" work.fifo_tb 
+# Start time: 16:55:17 on May 17,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(14): (vopt-2685) [TFMPC] - Too few port connections for 'fifo_under_test'.  Expected 8, found 7.
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(14): (vopt-2718) [TFMPC] - Missing connection for port 'i_staleAllowed'.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=3.
+# Loading work.fifo_tb(fast)
+# Loading work.fifo(fast)
+run 10000
+# Expected: 0 Actual:  0
+# Expected: 1 Actual:  1
+# Expected: 4 Actual:  4
+# Expected: 0 Actual:  0
+# Expected: 7 Actual:  7
+# Expected: 3 Actual:  3
+# Expected: 0 Acutal:  0
+# Expected: 31 Actual: 31
+# Expected: 28 Actual: 28
+# Expected: 1 Actual:  1
+# Expected: 0 Actual:  0
+# Expected: 0x1 Actual: 00000001
+# Expected: 0 Actual:  0
+# Expected: 0x2 Actual: 00000002
+# Expected: 0x0 Actual: 00000000
+# Expected: 1 Acutal:  4
+# Expected: 0xf Actual: 00000001
+# Expected: 1 Acutal:  0
+# Expected: 0x40 Actual: 00000040
+# Expected: 0 Acutal:  0
+# Expected: 0xf Actual: 0000000f
+vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 16:56:30 on May 17,2025
+# vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v 
+# -- Compiling module fifo_tb
+# 
+# Top level modules:
+# 	fifo_tb
+# End time: 16:56:30 on May 17,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc work.fifo_tb
+# End time: 16:56:35 on May 17,2025, Elapsed time: 0:01:18
+# Errors: 0, Warnings: 3
+# vsim -voptargs="+acc" work.fifo_tb 
+# Start time: 16:56:35 on May 17,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(14): (vopt-2685) [TFMPC] - Too few port connections for 'fifo_under_test'.  Expected 8, found 7.
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(14): (vopt-2718) [TFMPC] - Missing connection for port 'i_staleAllowed'.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=3.
+# Loading work.fifo_tb(fast)
+# Loading work.fifo(fast)
+run 10000
+# Expected: 0 Actual:  0
+# Expected: 1 Actual:  1
+# Expected: 4 Actual:  4
+# Expected: 0 Actual:  0
+# Expected: 7 Actual:  7
+# Expected: 3 Actual:  3
+# Expected: 0 Acutal:  0
+# Expected: 31 Actual: 31
+# Expected: 28 Actual: 28
+# Expected: 1 Actual:  1
+# Expected: 0 Actual:  0
+# Expected: 0x1 Actual: 00000001
+# Expected: 0 Actual:  0
+# Expected: 0x2 Actual: 00000002
+# Expected: 0x0 Actual: 00000000
+# Expected: 0xf Actual: 00000001
+# Expected: 0x40 Actual: 00000040
+# Expected: 1 Actual:  1
+# Expected: 0x80 Actual: 00000080
+# Expected: 0 Acutal:  0
+# Expected: 0xf Actual: 0000000f
+vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 16:57:46 on May 17,2025
+# vlog -reportprogress 300 -work work /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v 
+# -- Compiling module fifo_tb
+# 
+# Top level modules:
+# 	fifo_tb
+# End time: 16:57:46 on May 17,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc work.fifo_tb
+# End time: 16:57:52 on May 17,2025, Elapsed time: 0:01:17
+# Errors: 0, Warnings: 3
+# vsim -voptargs="+acc" work.fifo_tb 
+# Start time: 16:57:52 on May 17,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(14): (vopt-2685) [TFMPC] - Too few port connections for 'fifo_under_test'.  Expected 8, found 7.
+# ** Warning: /home/zfsalti/chipfab/caravel_user_project/library/laRNG/verilog/rtl/fifo_tb.v(14): (vopt-2718) [TFMPC] - Missing connection for port 'i_staleAllowed'.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=3.
+# Loading work.fifo_tb(fast)
+# Loading work.fifo(fast)
+run 10000
+# Expected: 0 Actual:  0
+# Expected: 1 Actual:  1
+# Expected: 4 Actual:  4
+# Expected: 0 Actual:  0
+# Expected: 7 Actual:  7
+# Expected: 3 Actual:  3
+# Expected: 0 Acutal:  0
+# Expected: 31 Actual: 31
+# Expected: 28 Actual: 28
+# Expected: 1 Actual:  1
+# Expected: 0 Actual:  0
+# Expected: 0x1 Actual: 00000001
+# Expected: 0 Actual:  0
+# Expected: 0x2 Actual: 00000002
+# Expected: 0x0 Actual: 00000000
+# Expected: 0x1 Actual: 00000001
+# Expected: 0x40 Actual: 00000040
+# Expected: 1 Actual:  1
+# Expected: 0x80 Actual: 00000080
+# Expected: 0 Acutal:  0
+# Expected: 0xf Actual: 0000000f
+# End time: 16:58:42 on May 17,2025, Elapsed time: 0:00:50
+# Errors: 0, Warnings: 3

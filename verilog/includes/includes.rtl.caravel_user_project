@@ -1,0 +1,20 @@
+/**
+ * WARNING: Edits to this file are not automatically updated
+ *
+ * If this module is in use, run `libman use <module>` to update
+ * the include paths in the caravel project.
+ *
+ * All comments except this first block are preserved.
+ *
+ * Use $(CHIPISU_VERILOG) to substitute the path to the library module
+ * verilog folder.
+ */
+
+-v $(CHIPISU_VERILOG)/rtl/fifo.v
+-v $(CHIPISU_VERILOG)/rtl/dualLatchBlock.v
+-v $(CHIPISU_VERILOG)/rtl/auxRanSet.v
+-v $(CHIPISU_VERILOG)/rtl/laRNG.v
+-v $(CHIPISU_VERILOG)/rtl/cLDCE.v
+-v $(CHIPISU_VERILOG)/rtl/cLDPE.v
+-v $(CHIPISU_VERILOG)/rtl/meta_srlatch_set_guarded.v
+
