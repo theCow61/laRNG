@@ -17,6 +17,6 @@ user management area memory mapped registers have to
 be dealt with as well.
 Look at `laRNG_into.c`.
 
-Look at `reg_mprj_irq`, `reg_user_irq_ena_out``, `reg_user_irq_0_ev_enable`, and `reg_user_irq_0_ev_pending`.
+Look at `reg_mprj_irq`, `reg_user_irq_ena_out`, `reg_user_irq_0_ev_enable`, and `reg_user_irq_0_ev_pending`.
 
 
