@@ -26,13 +26,30 @@ Base address of 0x30133700
 | 3 | NotBlocking | RW | 0 | 1: Memory read of data doesn't stall even if there isn't a full word of random. <br>0: Memory bus stalls on data read until a word of random is available from FIFO. |
 | 2 | StaleAllowed | RW | 0 | 1: When Enabled is set to low, the FIFO retains its state. <br>0: Random bits generated from when Enable was last high are only considered. |
 | 1 | AuxEnb | RW | 0 | 1: Auxiliary entropy source is enabled and combined with with primary entropy source. <br>0: Random generated bits come primarily from the primary entropy source. |
-| 0 | Mode | RW | 0 | 1: System peripheral mode where interaction of peripheral is done on chip with managment core. The FIFO is also enabled. <br>SPI slave mode where a new random bit is generated and outputted over an IO pin on the positive edge of master clock. Data pin should be sampled on the negative edge of master clock.
+| 0 | Mode | RW | 0 | 1: System peripheral mode where interaction of peripheral is done on chip with managment core. The FIFO is also enabled. <br>0: SPI slave mode where a new random bit is generated and outputted over an IO pin on the positive edge of master clock. Data pin should be sampled on the negative edge of master clock. |
 
 ## Request Register (Offset = `0x04`)
 
+| Bit | Field | Access | Initial | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| 31 | AsyncRequest | RW |  | Interrupt is triggered if BytesRequested amount of random bytes are available. Interrupt needs to be cleared via the Interrupt Clear Register for another interrupt to fire. | 
+| 30 - 5 | Reserved | RW |  | |
+| 4 - 0| BytesRequested | RW |  | Amount of random bytes to trigger an interrupt if AsyncRequested is high. |
+
 ## Random Bytes Ready Register (Offset = `0x08`)
 
+| Bit | Field | Access | Initial | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| 31 | InterruptStatus | R | 0 | High represents an active interrupt that has not yet been cleared. | 
+| 30 - 5 | Reserved | R | 0 | |
+| 4 - 0 | BytesReady | R | 0 | The amount of random bytes available. |
+
 ## Interrupt Clear Register (Offset = `0x0c`)
+
+| Bit | Field | Access | Initial | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| 31 - 1 | Reserved |  |  | | 
+| 0 | InterruptClear | W |  | Clear an active interrupt. Must be done for another interrupt to trigger. |
 
 # Primary Entropy Source Analog
 
