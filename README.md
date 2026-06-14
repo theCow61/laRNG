@@ -56,8 +56,11 @@ Base address of 0x30133700
 It was important to have the NAND gates that make up these latches be layed out in such a way where everything is symmetrical. For a single latch unit, one NAND gate is in a flipped orientation relative to the other NAND gate. This allows us to have symmetric and equal connections between the NAND gates. A buffer is used on
 the output of the SR latch and a dummy buffer (and a dummy pad on it) is used on the inverted output of the latch to keep things balanced. Because the NAND gates are in opposite orientations form each other, the power and wells don't neatly just line up. We connect multiple latch units in an alternating fashion and use a well cell to basically staple
 each latch together. A NAND gate from one latch shares a well cell with the NAND gate of the neighboring latch. The buffers have half well cell runnning horizontally connecting them.
-<img width="2560" height="1440" src="https://github.com/user-attachments/assets/8a7976e9-2295-49a0-b3f6-d699b4a6ce21" />
 
-<img width="2560" height="1440" src="https://github.com/user-attachments/assets/1515af50-6c15-4deb-be5c-47b2cbf1b090" />
+<img width="2555" height="1030" src="https://github.com/user-attachments/assets/23c748d0-a1e3-48d7-a283-b45eb277b154" />
+
+
+<img width="2553" height="1385" src="https://github.com/user-attachments/assets/5370394a-1adf-40a5-8dd9-c35e5fda98a5" />
+
 
 <img width="1699" height="1183" src="https://github.com/user-attachments/assets/1c15fc5d-f924-4286-bdaa-24dc355d8351" />
