@@ -51,7 +51,7 @@ Base address of 0x30133700
 | 31 - 1 | Reserved |  |  | | 
 | 0 | InterruptClear | W |  | Clear an active interrupt. Must be done for another interrupt to trigger. 
 
-## Data Can Be Pulled From Anywhere From Offset `0x10 - 0xFF`
+## Data Can Be Pulled Anywhere From Offset `0x10 - 0xFF`
 
 # Primary Entropy Source Analog
 
@@ -60,7 +60,11 @@ the output of the SR latch and a dummy buffer (and a dummy pad on it) is used on
 each latch together. A NAND gate from one latch shares a well cell with the NAND gate of the neighboring latch. The buffers have half well cell runnning horizontally connecting them.
 
 Simplified view:
-<img width="2560" height="1408" src="https://github.com/user-attachments/assets/7b73d514-b38b-485b-b42f-5bdf572581fc" />
+
+<img width="2560" height="1408" src="https://github.com/user-attachments/assets/14727372-62ce-4c76-b045-1a3eeb0fa734" />
+
+
+<!--<img width="2560" height="1408" src="https://github.com/user-attachments/assets/7b73d514-b38b-485b-b42f-5bdf572581fc" /> -->
 
 <img width="2555" height="1030" src="https://github.com/user-attachments/assets/23c748d0-a1e3-48d7-a283-b45eb277b154" />
 
