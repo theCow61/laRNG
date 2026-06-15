@@ -2,6 +2,8 @@
 
 # A True Random Number Generator ASIC
 
+Go [here](https://salti.tech/posts/larng) for commentary on the project.
+
 # Status: In Fabrication Stage
 
 
