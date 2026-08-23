@@ -4,7 +4,7 @@
 
 Go [here](https://salti.tech/posts/larng) for commentary on the project.
 
-# Status: In Fabrication Stage
+# Status: Fabricated
 
 
 This TRNG peripheral can be used as a memory mapped peripheral with the [VexRiscv](https://github.com/spinalhdl/vexriscv) management core or can be used as an SPI slave device. 
